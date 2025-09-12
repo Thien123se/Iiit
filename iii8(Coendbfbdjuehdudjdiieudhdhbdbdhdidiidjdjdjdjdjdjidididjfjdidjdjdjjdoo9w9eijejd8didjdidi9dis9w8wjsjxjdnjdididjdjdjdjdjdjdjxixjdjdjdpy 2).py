@@ -143,7 +143,7 @@ def display_ip_address(ip_address):
     if ip_address:
         banner()
         print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mĐịa chỉ IP : {ip_address}")
-        print(f"\033[1;35m[\033[1;36m<>\033[1;37m] \033[1;31mKEY LẦN ĐẦU  CÓ MÃ \033[1;41m \033[1;39mxxZilcxx\033[1;0m")
+        print(f"\033[1;35m[\033[1;36m<>\033[1;37m] \033[1;31mKEY LẦN CUỐI CÓ MÃ \033[1;41m \033[1;39mxxZilcxx\033[1;0m")
         print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35m \033[1;41m!\033[1;32m Đã Vượt Link Mà  IP không khớp thì sẽ phải vượt link lại từ đầu \033[1;0m")
 def luu_thong_tin_ip(ip, key, expiration_date):
     data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}

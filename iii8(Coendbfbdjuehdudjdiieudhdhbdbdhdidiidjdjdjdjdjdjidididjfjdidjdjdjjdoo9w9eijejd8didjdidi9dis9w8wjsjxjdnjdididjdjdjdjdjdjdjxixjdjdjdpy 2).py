@@ -143,17 +143,17 @@ def display_ip_address(ip_address):
     if ip_address:
         banner()
         print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;31mĐịa chỉ IP : {ip_address}")
-        print(f"\033[1;35m[\033[1;36m<>\033[1;37m] \033[1;31mKEY LẦN ĐẦU  CÓ MÃ \033[1;46m \033[1;39mxxKEYxx\033[1;0m")
+        print(f"\033[1;35m[\033[1;36m<>\033[1;37m] \033[1;31mKEY LẦN ĐẦU  CÓ MÃ \033[1;41m \033[1;39mxxZilcxx\033[1;0m")
         print(f"\033[1;97m[\033[1;91m<>\033[1;97m] \033[1;35m \033[1;41m!\033[1;32m Đã Vượt Link Mà  IP không khớp thì sẽ phải vượt link lại từ đầu \033[1;0m")
 def luu_thong_tin_ip(ip, key, expiration_date):
     data = {ip: {'key': key, 'expiration_date': expiration_date.isoformat()}}
     encrypted_data = encrypt_data(json.dumps(data))
-    with open('.k.json', 'w') as file:
+    with open('.7.json', 'w') as file:
         file.write(encrypted_data)
 
 def tai_thong_tin_ip():
     try:
-        with open('.k.json', 'r') as file:
+        with open('.7.json', 'r') as file:
             encrypted_data = file.read()
         return json.loads(decrypt_data(encrypted_data))
     except FileNotFoundError:
@@ -172,7 +172,7 @@ def generate_key_and_url(ip_address):
     zilc = now.strftime("%f%H%M%S%f")
     ngay = int(datetime.now().day)
     ip_numbers = ''.join(filter(str.isdigit, ip_address))
-    key = f'{zilc}KEY{ip_numbers}'
+    key = f'{ip_numbers}Zilc{zilc}'
     url = f'https://zilc777.github.io/?c6={key}'
     expiration_date = now + timedelta(hours=34)
     return url, key, expiration_date
@@ -230,7 +230,7 @@ def main():
                 return
             else:
                 print("🚫 Key đã hết hạn, vui lòng vượt link mới.")
-                os.remove('.k.json')
+                os.remove('.7.json')
 
         if da_qua_gio_moi():
             url, key, expiration_date = generate_key_and_url(ip_address)
@@ -307,7 +307,9 @@ if data and ip_address in data:
 
 
 
-            
+            print("\n")
+            print(f"            ⏳ KEY CÒN HẠN ĐẾN HẾT : \033[1;41m\033[1;97m {hours}h "
+                  f"\033[1;97m\033[1;46m {minutes}m {seconds}s\033[0m")
         else:
             print("🚫 Key đã hết hạn, vui lòng vượt link lại.")
     except Exception as e:
